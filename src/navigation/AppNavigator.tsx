@@ -41,8 +41,8 @@ function TabNavigator() {
 }
 
 export function AppNavigator() {
-  const { userEmail } = useApp();
-
+  const { user } = useApp();
+  const isLoggedIn = user != null;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -50,7 +50,7 @@ export function AppNavigator() {
         headerTintColor: '#FFF',
       }}
     >
-      {userEmail == null ? (
+      {!isLoggedIn ? (
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
       ) : (
         <>

@@ -5,7 +5,7 @@ import { COLORS } from '../constants/colors';
 import { Ionicons } from '@expo/vector-icons';
 
 export const ProfileScreen = () => {
-  const { transactions, totalBalance, userEmail, logout } = useApp();
+  const { user, transactions, totalBalance, logout } = useApp();
 
   const handleLogout = () => {
     Alert.alert('ออกจากระบบ', 'คุณต้องการออกจากระบบใช่หรือไม่?', [
@@ -20,8 +20,8 @@ export const ProfileScreen = () => {
         <Text style={styles.avatarText}>👤</Text>
       </View>
       
-      <Text style={styles.name}>{userEmail || 'ผู้ใช้งาน'}</Text>
-      <Text style={styles.email}>สมาชิก Expense Tracker</Text>
+      <Text style={styles.name}>{user?.name || 'ผู้ใช้งาน'}</Text>
+      <Text style={styles.email}>{user?.email || 'สมาชิก Expense Tracker'}</Text>
 
       <View style={styles.infoCard}>
         <View style={styles.infoRow}>
